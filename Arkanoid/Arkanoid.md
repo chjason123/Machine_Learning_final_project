@@ -9,6 +9,7 @@
 - 球拍左移右移。
 - 發球方向。
 - 預測球的反彈軌跡。
+- 通關Lv1~Lv20。
 
 限制:
 -----------------------------------
@@ -119,14 +120,17 @@ NONE：無動作
 
 分析:
 -----------------------------------
+<img width="1947" height="558" alt="image" src="https://github.com/user-attachments/assets/d4638966-ed15-4336-b517-92123c9368e6" />
 
 
 設計流程:
 -----------------------------------
+<img width="1814" height="352" alt="image" src="https://github.com/user-attachments/assets/d9b49b7c-31f4-4508-9f80-191a80e3de86" />
 
 
 架構圖:
 -----------------------------------
+<img width="1678" height="395" alt="image" src="https://github.com/user-attachments/assets/0bf7535c-50f0-47cf-a80b-5d543e8628ed" />
 
 
 
