@@ -99,20 +99,6 @@ Mlgame
 利用球的位置與球速，當對方打回時可計算出球的落點
 ```
 def calculate_ball_landing(ball_x, ball_y, ball_y_speed, ball_x_speed):
-    global player_temp, ball_x_final, ball_x_old, ball_y_final, ball_y_old, ball_y_speed_temp, ball_x_speed_temp, ball_high, ball_width
-    ball_x_final = ball_x
-    ball_x_old = ball_x
-    ball_y_final = ball_y
-    ball_y_old = ball_y
-    ball_y_speed_temp = ball_y_speed
-    ball_x_speed_temp = ball_x_speed
-    ball_high = BALL_SIZE_Y
-    ball_width = BALL_SIZE_X
-
-    # 調整接觸判斷：避免球「剛好落在板子範圍」造成誤判
-    contact_y_1P = PLATFORM_1P_Y - BALL_SIZE_Y - 1
-    contact_y_2P = PLATFORM_2P_Y + BALL_SIZE_Y + 1
-
     while True:
         # 左右牆反彈
         if (ball_x_final + ball_width) + ball_x_speed_temp > GAME_WIDTH:
@@ -124,21 +110,20 @@ def calculate_ball_landing(ball_x, ball_y, ball_y_speed, ball_x_speed):
             ball_x_final = 0
             ball_x_speed_temp = -1 * ball_x_speed_temp
         # 底部撞擊 (1P)
-        elif (ball_high + ball_y_final) + ball_y_speed_temp > PLATFORM_1P_Y:
-            ball_x_final = ball_x_final + min(max(ball_x_speed_temp, -1), 1) * (PLATFORM_1P_Y -1 - (ball_high + ball_y_final))
-            ball_y_final = PLATFORM_1P_Y - ball_high - 1
+        elif (ball_high + ball_y_final) + ball_y_speed_temp >= PLATFORM_1P_Y:
+            ball_x_final = ball_x_final + ball_x_speed_temp
+            ball_y_final = PLATFORM_1P_Y - ball_high 
+            print(''.join([str(x) for x in ['times :', times, '  x:', ball_x_final, 'y:', ball_y_final, '  x_speed:', ball_x_speed_temp, '  y_speed:', ball_y_speed_temp]]))
+            return (ball_x_final, ball_y_final)
         # 頂部撞擊 (2P)
         elif ball_y_final + ball_y_speed_temp <= PLATFORM_2P_Y + BALL_SIZE_Y:
-            ball_x_final = ball_x_final + min(max(ball_x_speed_temp, -1), 1) * (ball_y_final - (PLATFORM_2P_Y + BALL_SIZE_Y + 1))
-            ball_y_final = PLATFORM_2P_Y + BALL_SIZE_Y + 1
+            ball_x_final = ball_x_final + ball_x_speed_temp
+            ball_y_final = PLATFORM_2P_Y + BALL_SIZE_Y 
+            print(''.join([str(x) for x in ['times :', times, '  x:', ball_x_final, 'y:', ball_y_final, '  x_speed:', ball_x_speed_temp, '  y_speed:', ball_y_speed_temp]]))
+            return (ball_x_final, ball_y_final)
         else:
             ball_x_final = ball_x_final + ball_x_speed_temp
             ball_y_final = ball_y_final + ball_y_speed_temp
-
-
-        # 停止條件：碰到任一平台接觸 y（使用調整後的 contact_y）
-        if ball_y_final == contact_y_1P or ball_y_final == contact_y_2P:
-            return (ball_x_final, ball_y_final)
 ```
 ---
 
@@ -147,6 +132,18 @@ def calculate_ball_landing(ball_x, ball_y, ball_y_speed, ball_x_speed):
 MOVE_LEFT：將板子往左移
 MOVE_RIGHT：將板子往右移
 NONE：無動作
+
+分析:
+-----------------------------------
+<img width="1957" height="562" alt="image" src="https://github.com/user-attachments/assets/e8a7c314-cc79-4549-9af0-0a05a1851828" />
+
+設計流程:
+-----------------------------------
+<img width="1814" height="352" alt="image" src="https://github.com/user-attachments/assets/961a27c4-d205-460a-a3c6-a70153f08d84" />
+
+架構圖:
+-----------------------------------
+<img width="1678" height="395" alt="image" src="https://github.com/user-attachments/assets/7ab523fe-5628-4423-9f80-5403821c6dda" />
 
 
 
