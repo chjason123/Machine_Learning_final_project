@@ -1,4 +1,4 @@
-![side2](https://github.com/user-attachments/assets/902028eb-19e9-4bac-bdf2-84d49a82374f)# 乒乓球遊戲 — 訓練資料規格與需求文件
+# 乒乓球遊戲 — 訓練資料規格與需求文件
 版本：v1.0  
 日期：2025-11-26  
 
@@ -49,11 +49,14 @@ Mlgame
 
 
 切球機制
+
 1.板子與球的移動方向相同，球的 X軸 速度會增加
+
 2.板子與球的移動方向相反，球會被打回反方向，速度不變
+
 3.板子不動，球依照反彈原理反彈，速度不變
 
-<img width="527" height="606" alt="image" src="https://github.com/user-attachments/assets/fcd7a799-1de6-4ebc-9ade-e9c288fad194" />
+![side2](https://github.com/user-attachments/assets/902028eb-19e9-4bac-bdf2-84d49a82374f)
 
 介面:
 -----------------------------------
@@ -173,7 +176,8 @@ KNN演算法:
 
 分析:
 -----------------------------------
-<img width="1957" height="562" alt="image" src="https://github.com/user-attachments/assets/e8a7c314-cc79-4549-9af0-0a05a1851828" />
+<img width="1660" height="1101" alt="image" src="https://github.com/user-attachments/assets/ebcdc2f3-ec9d-45ea-b6d4-5b8596a877da" />
+
 
 設計流程:
 -----------------------------------
@@ -182,7 +186,7 @@ KNN演算法:
 
 架構圖:
 -----------------------------------
-<img width="1678" height="395" alt="image" src="https://github.com/user-attachments/assets/7ab523fe-5628-4423-9f80-5403821c6dda" />
+<img width="1935" height="645" alt="image" src="https://github.com/user-attachments/assets/cd8ee3bc-ab2b-469a-af1b-dfd556486443" />
 
 
 
