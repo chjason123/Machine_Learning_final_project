@@ -130,7 +130,7 @@ NONE：無動作
 
 架構圖:
 -----------------------------------
-<img width="1678" height="395" alt="image" src="https://github.com/user-attachments/assets/0bf7535c-50f0-47cf-a80b-5d543e8628ed" />
+<img width="1956" height="711" alt="image" src="https://github.com/user-attachments/assets/da7a8955-2d5d-47a6-9128-856f55385827" />
 
 
 
