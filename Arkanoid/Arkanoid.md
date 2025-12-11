@@ -125,7 +125,7 @@ NONE：無動作
 
 設計流程:
 -----------------------------------
-<img width="1123" height="598" alt="image" src="https://github.com/user-attachments/assets/27e57981-f56e-4c4f-9b18-f9d5c334e18e" />
+<img width="1121" height="786" alt="image" src="https://github.com/user-attachments/assets/74b79931-265e-4d3c-84ef-f8e9f4e775b7" />
 
 
 
