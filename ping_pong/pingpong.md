@@ -176,7 +176,8 @@ KNN演算法:
 
 分析:
 -----------------------------------
-<img width="1660" height="1101" alt="image" src="https://github.com/user-attachments/assets/ebcdc2f3-ec9d-45ea-b6d4-5b8596a877da" />
+<img width="1659" height="1110" alt="image" src="https://github.com/user-attachments/assets/09f501aa-5868-40d2-9abe-8668c7c86d5b" />
+
 
 
 設計流程:
@@ -186,7 +187,8 @@ KNN演算法:
 
 架構圖:
 -----------------------------------
-<img width="1956" height="711" alt="image" src="https://github.com/user-attachments/assets/3d62a9eb-c153-4d1a-83ec-70292bf72f42" />
+<img width="1951" height="723" alt="image" src="https://github.com/user-attachments/assets/5fbd9152-3c30-4f75-aab9-f2c6ebb357e7" />
+
 
 驗收:
 -----------------------------------
