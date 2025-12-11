@@ -186,7 +186,7 @@ KNN演算法:
 
 架構圖:
 -----------------------------------
-<img width="1935" height="645" alt="image" src="https://github.com/user-attachments/assets/cd8ee3bc-ab2b-469a-af1b-dfd556486443" />
+<img width="1956" height="711" alt="image" src="https://github.com/user-attachments/assets/3d62a9eb-c153-4d1a-83ec-70292bf72f42" />
 
 
 
