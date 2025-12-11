@@ -118,9 +118,9 @@ MOVE_LEFT：將板子往左移
 MOVE_RIGHT：將板子往右移
 NONE：無動作
 
-分析:
+分析(BreakDown):
 -----------------------------------
-<img width="1532" height="940" alt="image" src="https://github.com/user-attachments/assets/087ebbee-4939-4fa9-a654-eceec316bc8e" />
+<img width="1567" height="940" alt="image" src="https://github.com/user-attachments/assets/2f47529c-7e8f-4959-934b-e3e9e28293a0" />
 
 
 設計流程:
@@ -130,7 +130,7 @@ NONE：無動作
 
 架構圖:
 -----------------------------------
-<img width="1956" height="711" alt="image" src="https://github.com/user-attachments/assets/da7a8955-2d5d-47a6-9128-856f55385827" />
+<img width="1956" height="711" alt="image" src="https://github.com/user-attachments/assets/11c70dcd-bc86-4383-838f-e866f0b7f0f7" />
 
 
 
