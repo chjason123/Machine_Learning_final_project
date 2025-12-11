@@ -120,12 +120,12 @@ NONE：無動作
 
 分析:
 -----------------------------------
-<img width="1947" height="558" alt="image" src="https://github.com/user-attachments/assets/d4638966-ed15-4336-b517-92123c9368e6" />
+<img width="1532" height="940" alt="image" src="https://github.com/user-attachments/assets/087ebbee-4939-4fa9-a654-eceec316bc8e" />
 
 
 設計流程:
 -----------------------------------
-<img width="1814" height="352" alt="image" src="https://github.com/user-attachments/assets/d9b49b7c-31f4-4508-9f80-191a80e3de86" />
+<img width="1107" height="576" alt="image" src="https://github.com/user-attachments/assets/2282d2af-db92-4a2b-b7f3-2e5127bc225b" />
 
 
 架構圖:
