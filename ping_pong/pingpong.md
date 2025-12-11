@@ -181,7 +181,7 @@ KNN演算法:
 
 設計流程:
 -----------------------------------
-<img width="843" height="388" alt="image" src="https://github.com/user-attachments/assets/427637b2-8a98-4a8d-b2fb-72657e214283" />
+<img width="1107" height="576" alt="image" src="https://github.com/user-attachments/assets/699da105-150e-454f-8a60-11c682ef7844" />
 
 
 架構圖:
