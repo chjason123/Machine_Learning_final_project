@@ -188,5 +188,8 @@ KNN演算法:
 -----------------------------------
 <img width="1956" height="711" alt="image" src="https://github.com/user-attachments/assets/3d62a9eb-c153-4d1a-83ec-70292bf72f42" />
 
+驗收:
+-----------------------------------
+<img width="1094" height="633" alt="image" src="https://github.com/user-attachments/assets/210a7482-487a-4ec6-9d55-d7cf3a0605e3" />
 
 
