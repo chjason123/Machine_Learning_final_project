@@ -252,8 +252,10 @@ KNN演算法:
 | 1 (`MOVE_RIGHT`) | 1.00      | 1.00   | 1.00     | 257     |
 
 - **總體準確率：** 1.00 (100%)
-- **宏平均（Macro Avg）：** Precision = 1.00, Recall = 1.00, F1 = 1.00
-- **加權平均（Weighted Avg）：** Precision = 1.00, Recall = 1.00, F1 = 1.00
+
+決策邊界圖
+<img width="3790" height="1653" alt="knn_decision_boundary_distance" src="https://github.com/user-attachments/assets/0f4da83a-d586-452f-896f-9856f9f66a7c" />
+
 
 ---
 
