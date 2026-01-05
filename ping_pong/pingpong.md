@@ -92,55 +92,8 @@ Mlgame
   ]
 }
 ```
-- frame：遊戲畫面更新的編號
-- status：字串。目前的遊戲狀態，會是以下的值其中之一：
-- GAME_ALIVE：遊戲正在進行中
-- GAME_1P_WIN：這回合 1P 獲勝
-- GAME_2P_WIN：這回合 2P 獲勝
-- GAME_DRAW：這回合平手
-- ball (x, y) tuple。球的位置。
-- ball_speed：(x, y) tuple。目前的球速。
-- ball_served：true or false 布林值 boolean。表示是否已經發球。
-- serving_side：1P or 2P 字串 string。表示發球方。
-- platform_1P：(x, y) tuple。1P 板子的位置。
-- platform_2P：(x, y) tuple。2P 板子的位置。
-- blocker：(x, y) tuple。障礙物的位置。如果選擇的難度不是 HARD，則其值為 None。
 
-- 其他特徵(球落點):
-利用球的位置與球速，當對方打回時可計算出球的落點
-```
-def calculate_ball_landing(ball_x, ball_y, ball_y_speed, ball_x_speed):
-    while True:
-        # 左右牆反彈
-        if (ball_x_final + ball_width) + ball_x_speed_temp > GAME_WIDTH:
-            ball_y_final = ball_y_final + ball_y_speed_temp
-            ball_x_final = GAME_WIDTH - ball_width
-            ball_x_speed_temp = -1 * ball_x_speed_temp
-        elif ball_x_final + ball_x_speed_temp < 0:
-            ball_y_final = ball_y_final + ball_y_speed_temp
-            ball_x_final = 0
-            ball_x_speed_temp = -1 * ball_x_speed_temp
-        # 底部撞擊 (1P)
-        elif (ball_high + ball_y_final) + ball_y_speed_temp >= PLATFORM_1P_Y:
-            ball_x_final = ball_x_final + ball_x_speed_temp
-            ball_y_final = PLATFORM_1P_Y - ball_high 
-            print(''.join([str(x) for x in ['times :', times, '  x:', ball_x_final, 'y:', ball_y_final, '  x_speed:', ball_x_speed_temp, '  y_speed:', ball_y_speed_temp]]))
-            return (ball_x_final, ball_y_final)
-        # 頂部撞擊 (2P)
-        elif ball_y_final + ball_y_speed_temp <= PLATFORM_2P_Y + BALL_SIZE_Y:
-            ball_x_final = ball_x_final + ball_x_speed_temp
-            ball_y_final = PLATFORM_2P_Y + BALL_SIZE_Y 
-            print(''.join([str(x) for x in ['times :', times, '  x:', ball_x_final, 'y:', ball_y_final, '  x_speed:', ball_x_speed_temp, '  y_speed:', ball_y_speed_temp]]))
-            return (ball_x_final, ball_y_final)
-        else:
-            ball_x_final = ball_x_final + ball_x_speed_temp
-            ball_y_final = ball_y_final + ball_y_speed_temp
-```
----
-
-
-- 模型回傳動作指令
-
+- 動作回傳
 MOVE_LEFT：將板子往左移
 MOVE_RIGHT：將板子往右移
 NONE：無動作
@@ -148,7 +101,7 @@ NONE：無動作
 KNN演算法:
 ----------------------------------
 - KNN的演算法步驟如下：
-設定k值，亦即會在計算時找出距離x資料中最近的k筆資料，距離計算方式如下幾種：
+設定k值，亦即會在計算時找出距離x資料中最近的k筆資料：
 
 使用距離計算方式：
 
@@ -176,18 +129,19 @@ KNN演算法:
 
 分析:
 -----------------------------------
-<img width="1659" height="1110" alt="image" src="https://github.com/user-attachments/assets/09f501aa-5868-40d2-9abe-8668c7c86d5b" />
-
+<img width="1806" height="1146" alt="image" src="https://github.com/user-attachments/assets/26a0adfd-787f-45fc-ad58-26a4bb805a27" />
 
 
 設計流程:
 -----------------------------------
-<img width="1121" height="786" alt="image" src="https://github.com/user-attachments/assets/1012f269-1722-4528-9a9c-14b060d0a4b8" />
+<img width="1121" height="786" alt="image" src="https://github.com/user-attachments/assets/e2da38c3-6109-463a-b499-5a20306fb910" />
 
 
 架構圖:
 -----------------------------------
-<img width="1951" height="723" alt="image" src="https://github.com/user-attachments/assets/c9df2755-ac9e-4c4e-b799-e238d5fedf4e" />
+<img width="2186" height="623" alt="image" src="https://github.com/user-attachments/assets/becbd777-5191-4407-8cef-39813f3a8690" />
+
+<img width="1987" height="618" alt="image" src="https://github.com/user-attachments/assets/43fe647c-ff0b-43a3-953d-1c518990d326" />
 
 驗收:
 -----------------------------------
@@ -202,16 +156,6 @@ KNN演算法:
 - **特徵與標籤欄位：** 
   - `Distance`: 特徵
   - `Action`: 標籤
-
-### 前 5 筆資料
-| Distance | Action |
-|----------|--------|
-| 45       | 1      |
-| 40       | 1      |
-| 35       | 1      |
-| 30       | 1      |
-| 25       | 1      |
-
 
 
 ### 標籤分佈（Action）
@@ -237,13 +181,6 @@ KNN演算法:
 - **訓練集準確率：** 100%
 - **測試集準確率：** 100%
 
-### 混淆矩陣
-| **預測\實際** | -1 (`MOVE_LEFT`) | 0 (`NONE`) | 1 (`MOVE_RIGHT`) |
-|---------------|-----------------|-----------|------------------|
-| **-1**        | 221             | 0         | 0                |
-| **0**         | 0               | 674       | 0                |
-| **1**         | 0               | 0         | 257              |
-
 ### 分類指標
 | 類別   | Precision | Recall | F1-score | Support |
 |--------|-----------|--------|----------|---------|
@@ -253,36 +190,24 @@ KNN演算法:
 
 - **總體準確率：** 1.00 (100%)
 
-決策邊界圖
-<img width="3790" height="1653" alt="knn_decision_boundary_distance" src="https://github.com/user-attachments/assets/0f4da83a-d586-452f-896f-9856f9f66a7c" />
-
-
----
-
-## 4. 測試預測結果
-以下顯示一些測試資料的預測結果：
-
-| Distance | 預測標籤 | 動作            |
-|----------|----------|-----------------|
-| -50      | -1       | MOVE_LEFT       |
-| -20      | -1       | MOVE_LEFT       |
-| -10      | -1       | MOVE_LEFT       |
-| -5       | -1       | MOVE_LEFT       |
-| -3       | 0        | NONE            |
-| 0        | 0        | NONE            |
-| 3        | 0        | NONE            |
-| 5        | 1        | MOVE_RIGHT      |
-| 10       | 1        | MOVE_RIGHT      |
-| 20       | 1        | MOVE_RIGHT      |
-| 50       | 1        | MOVE_RIGHT      |
-
----
-
-## 5. 決策邊界可視化
+## 4. 決策邊界可視化
 - **邊界邏輯：**
   - `NONE (0)` 範圍：-3 至 3 之間
   - `MOVE_LEFT (-1)` 範圍：Distance < -3
   - `MOVE_RIGHT (1)` 範圍：Distance > 3
+
+決策邊界圖
+<img width="3790" height="1653" alt="knn_decision_boundary_distance" src="https://github.com/user-attachments/assets/0f4da83a-d586-452f-896f-9856f9f66a7c" />
+
+## 5. 結論
+我整體還是以演算法為核心，只是利用把最佳落點與板子x距離的差當特徵求出向左向右不動。
+
+最找特徵是兩個維度的(最佳落點跟板子位置)，但訓練效果還是差一點，所以改用他們的差值當特徵。
+<img width="3488" height="1653" alt="image" src="https://github.com/user-attachments/assets/83743d3b-42d2-454d-a83b-ef989cba0c69" />
+
+- **訓練集準確率：** 0.9922 (99.22%)
+- **測試集大小：**   0.9905 (99.05%)
+
 
    
 演算法遊玩
