@@ -213,4 +213,4 @@ KNN演算法:
 演算法遊玩
 -----------------------------------
 
-[![Watch the video](https://youtu.be/0yqKhdfs8F0/0.jpg)](https://youtu.be/0yqKhdfs8F0)
+[![Watch the video](https://github.com/chjason123/Machine_Learning_final_project/blob/main/ping_pong/Snipaste_2026-01-05_21-50-58.png)](https://youtu.be/0yqKhdfs8F0)
