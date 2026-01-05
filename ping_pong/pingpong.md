@@ -212,4 +212,5 @@ KNN演算法:
    
 演算法遊玩
 -----------------------------------
-https://youtu.be/vgyHdUP6mEA
+
+[![Watch the video](https://youtu.be/0yqKhdfs8F0/0.jpg)](https://youtu.be/0yqKhdfs8F0)
