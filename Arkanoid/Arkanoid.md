@@ -118,19 +118,20 @@ MOVE_LEFT：將板子往左移
 MOVE_RIGHT：將板子往右移
 NONE：無動作
 
-分析:
+分析(BreakDown):
 -----------------------------------
-<img width="1947" height="558" alt="image" src="https://github.com/user-attachments/assets/d4638966-ed15-4336-b517-92123c9368e6" />
+<img width="1567" height="940" alt="image" src="https://github.com/user-attachments/assets/2f47529c-7e8f-4959-934b-e3e9e28293a0" />
 
 
 設計流程:
 -----------------------------------
-<img width="1814" height="352" alt="image" src="https://github.com/user-attachments/assets/d9b49b7c-31f4-4508-9f80-191a80e3de86" />
+<img width="1121" height="786" alt="image" src="https://github.com/user-attachments/assets/74b79931-265e-4d3c-84ef-f8e9f4e775b7" />
+
 
 
 架構圖:
 -----------------------------------
-<img width="1678" height="395" alt="image" src="https://github.com/user-attachments/assets/0bf7535c-50f0-47cf-a80b-5d543e8628ed" />
+<img width="1951" height="723" alt="image" src="https://github.com/user-attachments/assets/89f4def0-ea5f-4671-b855-d525219e49e5" />
 
 
 
