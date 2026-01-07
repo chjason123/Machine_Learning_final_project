@@ -143,5 +143,9 @@ API:
 | `process_training_data()`  | `record`                | `features` 和 `targets` | 處理記錄以提取特徵和目標數據，用於模型訓練。                 |
 | `train_model()`            | `features` 和 `targets` | 已訓練的模型           | 使用 K 最近鄰演算法建立機器學習模型。                      |
 
+特徵分布圖:
+----
+座標 : 球的 x左標，與y做標 ，以及x方向速度
+<img width="899" height="795" alt="image" src="https://github.com/user-attachments/assets/066cc05c-1fee-45b4-acb6-0b662eb93148" />
 
 
