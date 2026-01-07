@@ -1,15 +1,13 @@
-# Arkanoid 打磚塊 — 訓練資料規格與需求文件
-版本：v1.0  
-日期：2025-11-26  
+# Arkanoid 打磚塊
+
 
 
 
 功能:
 -----------------------------------
 - 球拍左移右移。
-- 發球方向。
-- 預測球的反彈軌跡。
-- 通關Lv1~Lv20。
+- 預測球落點。
+- 通關關卡。
 
 限制:
 -----------------------------------
@@ -82,57 +80,68 @@ Mlgame
 - - GAME_PASS：所有磚塊都被破壞
 - - GAME_OVER：平台無法接到球
 
-- 其他特徵(球落點):
-利用球的位置與球速，當對方打回時可計算出球的落點
-```
-def calculate_ball_landing(ball_x, ball_y, ball_y_speed, ball_x_speed):
-    while True:
-        # 左右牆反彈
-        if (ball_x_final + ball_width) + ball_x_speed_temp > GAME_WIDTH:
-            ball_y_final = ball_y_final + ball_y_speed_temp
-            ball_x_final = GAME_WIDTH - ball_width
-            ball_x_speed_temp = -1 * ball_x_speed_temp
-        elif ball_x_final + ball_x_speed_temp < 0:
-            ball_y_final = ball_y_final + ball_y_speed_temp
-            ball_x_final = 0
-            ball_x_speed_temp = -1 * ball_x_speed_temp
-        elif (ball_high + ball_y_final) + ball_y_speed_temp >= PLATFORM_1P_Y:
-            ball_x_final = ball_x_final + ball_x_speed_temp
-            ball_y_final = PLATFORM_1P_Y - ball_high 
-            print(''.join([str(x) for x in ['times :', times, '  x:', ball_x_final, 'y:', ball_y_final, '  x_speed:', ball_x_speed_temp, '  y_speed:', ball_y_speed_temp]]))
-            return (ball_x_final, ball_y_final)
-        elif ball_y_final + ball_y_speed_temp <= PLATFORM_2P_Y + BALL_SIZE_Y:
-            ball_x_final = ball_x_final + ball_x_speed_temp
-            ball_y_final = PLATFORM_2P_Y + BALL_SIZE_Y 
-            print(''.join([str(x) for x in ['times :', times, '  x:', ball_x_final, 'y:', ball_y_final, '  x_speed:', ball_x_speed_temp, '  y_speed:', ball_y_speed_temp]]))
-            return (ball_x_final, ball_y_final)
-        else:
-            ball_x_final = ball_x_final + ball_x_speed_temp
-            ball_y_final = ball_y_final + ball_y_speed_temp
-```
 ---
+模型 K 最近鄰回歸（K Nearest Neighbors Regressor, KNN 回歸）:
+-----------------------------------
+```
+self.model = neighbors.KNeighborsRegressor(n_neighbors=5, weights='uniform')
+```
+監督式機器學習
+在 KNN 回歸中，當需要對一個新的樣本進行預測時，模型會：
+找出與該樣本「特徵距離最近」的 K 個鄰居；
+使用這些鄰居的目標值（如上例中表達的 targetX）來進行「平均值預測」（或基於其他權重計算的加權平均）。
+參數說明
 
-- 模型回傳動作指令
+### n_neighbors=5
+含義：K 最近鄰中的 K 值，用於決定將從訓練集中選擇「最近的 5 個鄰居」作為預測基礎。
+選擇 5 的原因：
+K 值過小（如 1 或 2）：容易受噪聲影響，模型可能過擬合。
+K 值過大：可能會納入來自很遠的鄰居，導致模型的預測平滑化，減少靈敏度，甚至可能受干擾。
+選擇 5 作為預設，表示取 5 個鄰居，使模型在「平滑性」與「靈敏度」之間取得平衡。
 
-MOVE_LEFT：將板子往左移
-MOVE_RIGHT：將板子往右移
-NONE：無動作
+### weights='uniform'
+含義：「影響預測值的每個鄰居的權重」。
+選項：
+uniform：均等權重，所有鄰居對預測值的貢獻相同，每個鄰居的目標值被平均計算。
+distance：基於距離加權，鄰近的樣本會有更高的權重，遠近樣本影響力遞減。
+為什麼選擇 uniform？
+目前的特徵（小球的座標和速度）在數據分布上具有一致性，因此採用均等權重。
+
+## 特徵與目標
+
+過濾有效的樣本：
+從 record 中篩選出關鍵幀，這些幀包含小球接近並到達平台的路徑數據。
+
+### 目標（targetX）
+當小球的高度 (y) 位於距離平台範圍（395 - 7 <= y <= 395 + 7）時：
+找出這個瞬間小球的 x 座標作為目標（targetX）。
+### 特徵（Features）
+跟蹤小球在該幀之前的運動軌跡，提取其位置與速度（x, y, dx, dy）。
+僅當小球正在下降（dy > 0）時，將這些數據作為訓練樣本。
 
 分析(BreakDown):
 -----------------------------------
-<img width="1567" height="940" alt="image" src="https://github.com/user-attachments/assets/2f47529c-7e8f-4959-934b-e3e9e28293a0" />
+<img width="1625" height="740" alt="image" src="https://github.com/user-attachments/assets/70a9e01d-7d01-4af9-b248-8fc831808ba4" />
 
 
 設計流程:
 -----------------------------------
-<img width="1121" height="786" alt="image" src="https://github.com/user-attachments/assets/74b79931-265e-4d3c-84ef-f8e9f4e775b7" />
-
+<img width="2164" height="447" alt="image" src="https://github.com/user-attachments/assets/1d97a6ab-bcf6-4db0-9ac1-74fb56ebe3cd" />
 
 
 架構圖:
 -----------------------------------
-<img width="1951" height="723" alt="image" src="https://github.com/user-attachments/assets/89f4def0-ea5f-4671-b855-d525219e49e5" />
+<<img width="2164" height="447" alt="image" src="https://github.com/user-attachments/assets/5dc53a4b-9ac0-4037-9487-fff356e46900" />
 
+API:
+----
+| 函數名稱                       | 輸入                      | 輸出                  | 功能說明                                         |
+|--------------------------------|---------------------------|-----------------------|------------------------------------------------|
+| `load_data()`              | `features.pickle`、`targets.pickle`、`model.pickle`  | 無                    | 載入模型、訓練數據（features.pickle、targets.pickle）。   |
+| `save_training_data()`     | 已訓練數據：features、targets | `features.pickle`、`targets.pickle`、`model.pickle` | 儲存特徵數據、目標數據，以及模型。                   |
+| `save_record()`            | `record`                | `record.csv`         | 保存遊戲記錄到 CSV 檔案中。                          |
+| `process_training_data()`  | `record`                | `features` 和 `targets` | 處理記錄以提取特徵和目標數據，用於模型訓練。                 |
+| `train_model()`            | `features` 和 `targets` | 已訓練的模型           | 使用 K 最近鄰演算法建立機器學習模型。                      |
 
 
 
