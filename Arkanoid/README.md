@@ -119,20 +119,25 @@ distance：基於距離加權，鄰近的樣本會有更高的權重，遠近樣
 跟蹤小球在該幀之前的運動軌跡，提取其位置與速度（x, y, dx, dy）。
 僅當小球正在下降（dy > 0）時，將這些數據作為訓練樣本。
 
-分析(BreakDown):
------------------------------------
-<img width="1625" height="740" alt="image" src="https://github.com/user-attachments/assets/70a9e01d-7d01-4af9-b248-8fc831808ba4" />
-
-
 設計流程:
 -----------------------------------
 <img width="1076" height="532" alt="image" src="https://github.com/user-attachments/assets/492090d0-c41b-4571-b15f-e903e51055f4" />
 
 
 
+分析(BreakDown):
+-----------------------------------
+<img width="1873" height="740" alt="image" src="https://github.com/user-attachments/assets/19a77976-0999-4493-a9ee-6a7dbd20d4ee" />
+
+
+
 架構圖:
 -----------------------------------
-<<img width="2164" height="447" alt="image" src="https://github.com/user-attachments/assets/5dc53a4b-9ac0-4037-9487-fff356e46900" />
+<img width="2164" height="458" alt="image" src="https://github.com/user-attachments/assets/39593da3-68a1-40cd-939d-8af6dc5228da" />
+
+程式:
+<img width="2164" height="458" alt="image" src="https://github.com/user-attachments/assets/9510b435-430b-4b42-bf50-dcad90ccbec4" />
+
 
 API:
 ----
