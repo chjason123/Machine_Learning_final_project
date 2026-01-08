@@ -1,4 +1,4 @@
-# 乒乓球遊戲 — 訓練資料規格與需求文件
+<img width="1987" height="618" alt="image" src="https://github.com/user-attachments/assets/3b59c487-0403-42c5-8725-c44d616c2c57" /># 乒乓球遊戲 — 訓練資料規格與需求文件
 
 
 
@@ -125,21 +125,23 @@ KNN演算法:
 計算距離後，找出k筆資料，並以投票的方式計算k點中的類別，並以投票數量最高的那個類別作為x的類別
 
 
-分析:
------------------------------------
-<img width="1806" height="1146" alt="image" src="https://github.com/user-attachments/assets/26a0adfd-787f-45fc-ad58-26a4bb805a27" />
 
 
 設計流程:
 -----------------------------------
 <img width="1121" height="786" alt="image" src="https://github.com/user-attachments/assets/e2da38c3-6109-463a-b499-5a20306fb910" />
 
+分析:
+-----------------------------------
+<img width="1806" height="1146" alt="image" src="https://github.com/user-attachments/assets/3c6b7e4e-5fdc-4798-92a4-fb4c637a127f" />
 
 架構圖:
 -----------------------------------
-<img width="2186" height="623" alt="image" src="https://github.com/user-attachments/assets/becbd777-5191-4407-8cef-39813f3a8690" />
+<img width="2186" height="623" alt="image" src="https://github.com/user-attachments/assets/96b11f26-3d77-4583-bc24-de2a8b00715f" />
 
-<img width="1987" height="618" alt="image" src="https://github.com/user-attachments/assets/43fe647c-ff0b-43a3-953d-1c518990d326" />
+<img width="1987" height="618" alt="image" src="https://github.com/user-attachments/assets/6e5b3cae-5c3f-4f54-85be-696dd7e95781" />
+
+
 
 驗收:
 -----------------------------------
