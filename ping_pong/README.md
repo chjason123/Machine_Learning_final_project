@@ -133,7 +133,7 @@ KNN演算法:
 
 分析:
 -----------------------------------
-<img width="1806" height="1146" alt="image" src="https://github.com/user-attachments/assets/3c6b7e4e-5fdc-4798-92a4-fb4c637a127f" />
+<img width="1806" height="1146" alt="image" src="https://github.com/user-attachments/assets/7136f231-c04c-4efe-ae3d-1cba123b7e9e" />
 
 架構圖:
 -----------------------------------
