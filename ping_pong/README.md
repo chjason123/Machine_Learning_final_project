@@ -145,6 +145,76 @@ KNN演算法:
 -----------------------------------
 <img width="1094" height="633" alt="image" src="https://github.com/user-attachments/assets/210a7482-487a-4ec6-9d55-d7cf3a0605e3" />
 
+API:
+-----------------------------------
+
+
+### `calculate_ball_landing`
+#### 功能：
+計算球的下一個落點（包括 X, Y 坐標），基於實時的速度、平台位置等變量進行邏輯運算。
+
+#### 參數：
+- **ball_x (int)**: 球的 X 座標。
+- **ball_y (int)**: 球的 Y 座標。
+- **ball_y_speed (int)**: Y 軸速度。
+- **ball_x_speed (int)**: X 軸速度。
+- **first_nonzero_frame (int, optional)**: 第一幀的時間 (非零幀)。
+- **current_frame (int, optional)**: 當前幀的編號。
+- **do_print (bool)**: 是否在過程中輸出調試訊息。
+- **double_prediction (bool)**: 是否進行雙層預測 (適用於一些模擬情況)。
+
+#### 回傳：
+- **tuple**: 具體格式是 `(ball_x_final, ball_y_final, ball_y_speed_temp, ball_x_speed_temp, times)`。
+
+---
+
+### `double_calculate_ball_landing`
+#### 功能：
+基於 `calculate_ball_landing`，進一步模擬三種不同的物理情況並預測球的落點。
+
+#### 參數：
+與 `calculate_ball_landing` 相同，增加：
+- **double_calculate**: 活動指令。
+
+#### 回傳：
+- **tuple**: `(res_normal, res_cut, res_accel, pre_frame_count)`
+
+---
+
+### `select_best_target`
+#### 功能：
+根據落點和當前球拍位置，選擇最佳目標位置以增加命中率。
+
+#### 參數：
+- **platform_x (int)**: 平台的 X 座標。
+- **normal_x, cut_x, accel_x (int)**: 三個預測的 X 落點位置。
+- **normal_frame, cut_frame, accel_frame (int)**: 衍生模擬所需幀。
+- **pre_frame_count (int)**: 預測的前一幀計數。
+
+#### 回傳：
+- **int**: 最佳目標座標。
+
+---
+
+### `MLPlay` 類別
+#### 功能：
+主要進行遊戲邏輯決策的 AI 類別。
+#### 初始方法：
+- **`__init__(self, ai_name, *args, **kwargs)`**
+  - 初始化特徵：
+    - `side`: 決定輪到 1P 還是 2P。
+    - 初始化模型 `knn_distance_only.pickle`。
+
+- **方法**
+  - **`update(self, scene_info, *args, **kwargs)`**
+    - 判斷遊戲邏輯，根據當前場景資訊執行命令，包含以下狀態：
+      - `GAME_ALIVE`: 運行時策略。
+      - 移動策略：基於落點預測球拍 `MOVE_LEFT`、`MOVE_RIGHT`。
+
+  - **`reset(self)`**
+    - 清除遊戲中的緩存狀態。
+
+
 # KNN 模型訓練報告
 
 ## 1. 資料分析
