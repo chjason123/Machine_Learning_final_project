@@ -126,7 +126,8 @@ distance：基於距離加權，鄰近的樣本會有更高的權重，遠近樣
 
 設計流程:
 -----------------------------------
-<img width="2164" height="447" alt="image" src="https://github.com/user-attachments/assets/1d97a6ab-bcf6-4db0-9ac1-74fb56ebe3cd" />
+<img width="1076" height="532" alt="image" src="https://github.com/user-attachments/assets/492090d0-c41b-4571-b15f-e903e51055f4" />
+
 
 
 架構圖:
